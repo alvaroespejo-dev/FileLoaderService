@@ -1,0 +1,21 @@
+@AEspejo.FileLoaderService_HostAddress = https://localhost:7111
+
+### Http File Found
+GET {{AEspejo.FileLoaderService_HostAddress}}/api/FileLoader/HttpFile?path=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D1nPcNlYbNH1vLBEQtj9_1pB_4C8YDP_CL
+Accept: application/json
+
+### Http File Internal Server Error - Bad Request
+GET {{AEspejo.FileLoaderService_HostAddress}}/api/FileLoader/HttpFile?path=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%000000000000000
+Accept: application/json
+
+### Http File Not Found
+GET {{AEspejo.FileLoaderService_HostAddress}}/api/FileLoader//HttpFile?path=
+Accept: application/json
+
+### Email File Found - Outlook
+GET {{AEspejo.FileLoaderService_HostAddress}}/api/FileLoader/EmailFile?host=imap-mail.outlook.com&port=993&username=useremail@outlook.com&password=Pa$$w0rd&subject=test
+Accept: application/json
+
+### Email File Found - Gmail
+GET {{AEspejo.FileLoaderService_HostAddress}}/api/FileLoader/EmailFile?host=imap.gmail.com&port=993&username=useremail@gmail.com&password=Pa$$w0rd&fromEmail=test@test.com
+Accept: application/json
