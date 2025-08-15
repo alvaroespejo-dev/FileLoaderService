@@ -1,22 +1,59 @@
 # FileLoaderService
 
-**FileLoaderService** is a C# API that allows reading files from multiple sources such as Local, HTTP/HTTPS, FTP/SFTP, and Email (IMAP/POP3). Designed for integrations and automated file ingestion workflows.
+**FileLoaderService** is a C# API that allows reading files from multiple sources such as **Local**, **HTTP/HTTPS**, **FTP/SFTP**, and **Email** (IMAP/POP3).  
+It is designed for integrations and automated file ingestion workflows, and it is **fully Dockerized** for quick deployment.
 
-- 📂 **Local** (File system)
-- 🌐 **HTTP/HTTPS** (download from URLs)
-- 📤 **FTP/SFTP** (with credentials)
-- 📩 **Email** (IMAP/POP3, attachment reading)
+---
 
-Its purpose is to unify access to distributed files from different sources, making it easier to integrate into systems and automated workflows.
+## 📂 Supported Sources
+- **Local** — Direct access to the file system.
+- **HTTP/HTTPS** — Download from URLs.
+- **FTP/SFTP** — With authentication.
+- **Email** — IMAP/POP3 for reading attachments.
+
+Its main purpose is to **unify access** to files distributed across different sources, simplifying integration into systems and automated processes.
 
 ---
 
 ## 🚀 Features
+- Modular and extensible architecture.
+- JSON responses with **Base64** content or binary download.
+- Standardized HTTP error handling.
+- Easily extendable to more sources (Google Drive, Azure Blob Storage, Amazon S3, etc.).
+- **Docker-ready** — Runs instantly in containerized environments.
 
-- Extensible architecture with **interfaces and concrete classes** for each source type.
-- JSON responses with **Base64** file content or binary download.
-- Standard HTTP error handling and responses.
-- Easy to extend for additional sources (Google Drive, Azure Blob, Amazon S3, etc.).
+---
+
+## 🏛 Architectures and Design Patterns Used
+This project follows professional development principles and patterns to ensure **maintainability, scalability, and ease of extension**:
+
+### Architecture
+- **N-Layer Architecture** (Presentation → Application → Domain → Infrastructure).
+- Clear separation of responsibilities.
+- Ready to evolve into **Clean Architecture** if needed.
+
+### Design Patterns
+- **Strategy** — To handle different file sources using specific classes that implement the same interface (`IFileLoader`).
+- **Factory Method** — To create the correct file loader instance based on the source type.
+- **Dependency Injection** — Configured with `Microsoft.Extensions.DependencyInjection` for low coupling.
+- **Adapter** — To unify external libraries like `MailKit` under a common interface.
+- **Template Method** — To define reusable base flows while allowing customization for each loader type.
+
+### Principles and Best Practices
+- **SOLID**
+- **DRY** (Don't Repeat Yourself)
+- **KISS** (Keep It Simple, Stupid)
+- **YAGNI** (You Aren’t Gonna Need It)
+- Use of **DTOs** for data transfer.
+- Code documented and following **.NET Coding Standards** conventions.
+
+---
+
+## 🐳 Running with Docker
+
+**Build the image**
+
+docker build -t fileloaderservice .
 
 ---
 
